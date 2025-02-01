@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Trigger and verify Run_AdBlock_Rule_Generator_YAML
         env:
-          TOKEN: ${{ secrets.TOKEN }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           workflow_id="Run_AdBlock_Rule_Generator_YAML.yml"
           ref="main"
