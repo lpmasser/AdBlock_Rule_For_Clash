@@ -102,7 +102,7 @@ jobs:
       - name: Push changes
         shell: powershell
         env:
-          TOKEN: ${{ secrets.TOKEN }}  # 从 GitHub Secrets 中获取 TOKEN
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 从 GitHub Secrets 中获取 TOKEN
         run: |
           $maxAttempts = 5  # 定义最大重试次数
           
