@@ -12,14 +12,14 @@ jobs:
       - name: Delete all tags
         run: |
           # 获取所有标签
-          tags=$(curl -s -H "Authorization: token ${{ secrets.TOKEN }}" \
+          tags=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                "https://api.github.com/repos/${{ github.repository }}/git/refs/tags" \
                | jq -r '.[].ref' | sed 's|refs/tags/||')
           
           # 遍历并删除每个标签
           for tag in $tags
           do
-            curl -X DELETE -H "Authorization: token ${{ secrets.TOKEN }}" \
+            curl -X DELETE -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
                  "https://api.github.com/repos/${{ github.repository }}/git/refs/tags/$tag"
             echo "Deleted tag: $tag"
           done
